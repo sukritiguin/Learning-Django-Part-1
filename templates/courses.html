@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML & CSS Course</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Set a background color and font styles */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Create a header with a background color and centered text */
+        header {
+            background-color: #007BFF;
+            text-align: center;
+            padding: 20px;
+            color: white;
+        }
+
+        /* Style the course details container */
+        .course-details {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style the course code */
+        .course-code {
+            font-size: 24px;
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        /* Style the course name */
+        .course-name {
+            font-size: 20px;
+            margin-top: 10px;
+        }
+
+        /* Style the course description */
+        .course-description {
+            font-size: 16px;
+            margin-top: 20px;
+        }
+
+        marquee{
+            background-color: red;
+            color: white;
+        }
+
+        marquee a{
+            color: white;
+        }
+
+
+        /* Paginator Container Styles */
+        .paginator {
+            display: flex;
+            list-style: none;
+            padding: 0;
+            margin: 20px;
+            justify-content: center;
+        }
+
+        /* Paginator Item Styles */
+        .paginator li {
+            margin-right: 5px;
+        }
+
+        /* Paginator Link Styles */
+        .paginator a {
+            display: block;
+            padding: 8px 12px;
+            text-decoration: none;
+            background-color: #3498db;
+            color: #fff;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>HTML & CSS Course</h1>
+    </header>
+
+    <br><br><br><br>
+
+    <marquee onmouseover="stop();" onmouseout="start();">
+        {% for news_item in news%}
+            <a href="/newsdetails/{{news_item.slug}}">{{news_item.news_title}}</a> &nbsp;&nbsp;
+        {% endfor %}
+    </marquee>
+
+    <br><br><br>
+
+    <form method="get">
+        <input type="text" name="servicename" value="">
+        <input type="submit" value="Search">
+    </form>
+
+
+    <div class="course-details">
+        {% for course in courses %}
+            <div class="course-code">Course Code: {{course.service_icon}}</div>
+            <div class="course-name">Course Name: {{course.service_title}}</div>
+            <div class="course-description">
+                <p>{{course.service_description}}</p>
+            </div>
+        {% endfor %}
+    </div>
+
+<br><br>
+    <ul class="paginator">
+        {% if courses.has_previous %}
+            <li><a href="/courses/?page={{courses.previous_page_number}}">Previous Page</a></li>
+            <li><a href="/courses/?page={{courses.previous_page_number}}">{{courses.previous_page_number }}</a></li>
+        {% endif %}    
+        <li><a href="#">{{courses.number}}</a></li>
+        {% if courses.has_next%}
+            <li><a href="/courses/?page={{courses.next_page_number}}">{{courses.next_page_number}}</a></li>
+            <li><a href="/courses/?page={{courses.next_page_number}}">Next Page</a></li>
+        {% endif %}
+    </ul>
+</body>
+</html>
+

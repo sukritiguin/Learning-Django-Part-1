@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News App</title>
+    <link rel="stylesheet" href="/static/css/news_details_style.css">
+</head>
+<body>
+    <header>
+        <h1>News App</h1>
+    </header>
+    <div class="news-container">
+        <h2>Latest News</h2>
+        <ul class="news-list">
+            <li class="news-item">
+                <h3 class="news-title">{{selected_news.news_title}}</h3>
+                <p class="news-details">{{selected_news.news_description}}</p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

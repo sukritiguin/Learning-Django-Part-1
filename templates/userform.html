@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<body style="font-family: Arial, sans-serif; background-color: #f4f4f4; margin: 0; padding: 0;">
+
+    <div style="background-color: #333; color: #fff; text-align: center; padding: 20px;">
+        <h1>User Registration</h1>
+    </div>
+
+    <div style="max-width: 400px; margin: 20px auto; background-color: #fff; padding: 20px; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);">
+        <form method="post" action="{% url 'submituserform'%}">
+            {% csrf_token %}
+            {% comment %} <label for="username">Username:</label>
+            <input type="text" id="username" name="username" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px;" required>
+
+            <label for="username">Name:</label>
+            <input type="text" id="username" name="name" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px;" required>
+
+            <label for="username">Surname:</label>
+            <input type="text" id="username" name="surname" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px;" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" style="width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 3px;" required> {% endcomment %}
+
+            {{userform_key}}
+
+            <button type="submit" style="background-color: #333; color: #fff; padding: 10px 20px; border: none; border-radius: 3px; cursor: pointer;">Register</button>
+        </form>
+    </div>
+
+</body>
+
+{% endblock %}
